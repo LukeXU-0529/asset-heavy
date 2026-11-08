@@ -30,12 +30,13 @@
     <nav aria-label="切换产业链"></nav>
   </header>
   <main id="chain-content">
-    <noscript><p>请选择 <a href="pcb.html?view=1&amp;tab=dashboard">PCB 产业链</a> 或 <a href="fab.html">Fab 与封测</a>。</p></noscript>
+    <noscript><p>请选择 <a href="pcb.html?view=1&amp;tab=dashboard">PCB 产业链</a> 或 <a href="fab.html">Fab 与封测</a> 或 <a href="fab.html?scope=overseas">Fab*海外</a>。</p></noscript>
   </main>
   <script type="module">
     const chains = [
       { id: 'pcb', label: 'PCB 产业链', page: 'pcb.html', forwardQuery: true },
       { id: 'fab', label: 'Fab 与封测', page: 'fab.html' },
+      { id: 'fab-overseas', label: 'Fab*海外', page: 'fab.html?scope=overseas', frameId: 'fab' },
     ];
 
     const nav = document.querySelector('nav');
@@ -62,15 +63,19 @@
         source.hash = location.hash;
       }
 
-      let frame = frames.get(chain.id);
-      if (!frame) {
+      const frameId = chain.frameId ?? chain.id;
+      let frame = frames.get(frameId);
+      if (!frame || (frameId === 'fab' && frame.src !== source.href)) {
+        const previous = frame;
         frame = document.createElement('iframe');
-        frame.title = chain.label;
-        content.append(frame);
-        frames.set(chain.id, frame);
+        frame.src = source.href;
+        if (previous) previous.replaceWith(frame);
+        else content.append(frame);
+        frames.set(frameId, frame);
       }
+      frame.title = chain.label;
       if (frame.src !== source.href) frame.src = source.href;
-      for (const [id, element] of frames) element.hidden = id !== chain.id;
+      for (const [id, element] of frames) element.hidden = id !== frameId;
       for (const [id, link] of links) {
         link.href = chainUrl(id);
         if (id === chain.id) link.setAttribute('aria-current', 'page');
