@@ -1,6 +1,6 @@
 # Asset Heavy · 产业产能地图
 
-同一个 GitHub Pages 入口按产业链切换。默认打开 PCB，`?chain=fab` 直达 Fab 与封测，`?chain=fab-overseas` 直达 Fab · 海外的世界地图。
+同一个 GitHub Pages 入口按产业链切换。默认打开 PCB，`?chain=fab` 直达 Fab 与封测，`?chain=fab-overseas` 直达 Fab · 海外的世界地图，可分别查看晶圆制造和海外封测基地。
 
 - 各图谱都按公司 → 城市整体 → 基地／项目组织，提供地图、年度工作台、项目时间线、基地清单与来源口径。
 - PCB 发布文件是 `pcb.html`。Fab 发布文件是 `fab.html`，它从同目录的 `snapshot.*.json` 载入审核过的基地、公开资料和城市口径。
