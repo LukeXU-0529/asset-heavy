@@ -30,13 +30,13 @@
     <nav aria-label="切换产业链"></nav>
   </header>
   <main id="chain-content">
-    <noscript><p>请选择 <a href="pcb.html?view=1&amp;tab=dashboard">PCB 产业链</a> 或 <a href="fab.html">Fab 与封测</a> 或 <a href="fab.html?scope=overseas">Fab*海外</a>。</p></noscript>
+    <noscript><p>请选择 <a href="pcb.html?view=1&amp;tab=dashboard">PCB 产业链</a> 或 <a href="fab.html">Fab 与封测</a> 或 <a href="fab.html?scope=overseas">Fab · 海外</a>。</p></noscript>
   </main>
   <script type="module">
     const chains = [
       { id: 'pcb', label: 'PCB 产业链', page: 'pcb.html', forwardQuery: true },
       { id: 'fab', label: 'Fab 与封测', page: 'fab.html' },
-      { id: 'fab-overseas', label: 'Fab*海外', page: 'fab.html?scope=overseas', frameId: 'fab' },
+      { id: 'fab-overseas', label: 'Fab · 海外', page: 'fab.html?scope=overseas', frameId: 'fab' },
     ];
 
     const nav = document.querySelector('nav');
